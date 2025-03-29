@@ -6,6 +6,10 @@ import Timeplan from "../pages/Timeplan";
 import BliMedlem from "../pages/BliMedlem";
 import Kontakt from "../pages/KontaktOss";
 import Nettbutikk from "../pages/Nettbutikk";
+import PTtjenester from "../pages/PTtjenester.tsx";
+import Gruppetimer from "../pages/Gruppetimer.tsx";
+import Styrketrening from "../pages/Styrketrening.tsx";
+
 
 function Routing() {
     return (
@@ -17,6 +21,10 @@ function Routing() {
             <Route path="/bli-medlem" element={<BliMedlem />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/nettbutikk" element={<Nettbutikk />} />
+
+            <Route path= "/tjenester/styrketrening"  element={<Styrketrening />} />
+            <Route path= "/tjenester/gruppetimer"  element={<Gruppetimer />} />
+            <Route path= "/tjenester/pt-tjenester"  element={<PTtjenester />} />
             <Route path="*" element={<HomePage />} />
         </Routes>
     );
