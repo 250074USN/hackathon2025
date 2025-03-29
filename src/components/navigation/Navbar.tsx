@@ -123,23 +123,6 @@ export default function Navbar() {
               ))}
             </div>
             <div className="border-t border-gray-700 pt-4 pb-3">
-              <div className="flex items-center px-5">
-                <div className="shrink-0">
-                  <img
-                    alt=""
-                    src={user.imageUrl}
-                    className="size-10 rounded-full"
-                  />
-                </div>
-                <div className="ml-3">
-                  <div className="text-base/5 font-medium text-white">
-                    {user.name}
-                  </div>
-                  <div className="text-sm font-medium text-gray-400">
-                    {user.email}
-                  </div>
-                </div>
-              </div>
               <div className="mt-3 space-y-1 px-2">
                 {userNavigation.map((item) => (
                   <DisclosureButton
