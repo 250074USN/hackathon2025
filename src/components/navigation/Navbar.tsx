@@ -9,11 +9,11 @@ const user = {
 }
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false },
+    { name: 'Hjem', href: '#', current: true },
+    { name: 'Finn senter', href: '#', current: false },
+    { name: 'Tjenester', href: '#', current: false },
+    { name: 'Timeplan', href: '#', current: false },
+    { name: 'Bli medlem', href: '#', current: false },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
