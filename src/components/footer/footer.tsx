@@ -1,4 +1,4 @@
-import Logo from "@/assets/phish_logo-removebg.png";
+// import Logo from "@/assets/phish_logo-removebg.png";
 
 const Footer = () => {
     return (
