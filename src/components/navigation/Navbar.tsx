@@ -1,5 +1,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link, useLocation } from 'react-router-dom';
 
 const user = {
     name: 'Tom Cook',
@@ -9,16 +10,19 @@ const user = {
 }
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false },
+    { name: 'Hjem', path: '/' },
+    { name: 'Finn senter', path: '/finn-senter' },
+    { name: 'Tjenester', path: '/tjenester' },
+    { name: 'Timeplan', path: '/timeplan' },
+    { name: 'Nettbutikk', path: '/nettbutikk' },
+    { name: 'Bli medlem', path: '/bli-medlem' },
+    { name: 'Kontakt oss', path: '/kontakt' },
 ]
+
 const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
+    { name: 'Your Profile', path: '/your-profile' },
+    { name: 'Settings', path: '/settings' },
+    { name: 'Sign out', path: '/sign-out' },
 ]
 
 function classNames(...classes) {
@@ -26,6 +30,10 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+
+    const router = useLocation()
+    const currentPage = navigation.find(item => item.path === router.pathname)?.name || 'Hjem'
+
     return (
         <>
             <div className="min-h-full">
@@ -43,17 +51,16 @@ export default function Navbar() {
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
-                                                href={item.href}
-                                                aria-current={item.current ? 'page' : undefined}
+                                                to={item.path}
                                                 className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    item.path === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                     'rounded-md px-3 py-2 text-sm font-medium',
                                                 )}
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
@@ -84,12 +91,12 @@ export default function Navbar() {
                                         >
                                             {userNavigation.map((item) => (
                                                 <MenuItem key={item.name}>
-                                                    <a
-                                                        href={item.href}
+                                                    <Link
+                                                        to={item.path}
                                                         className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                                                     >
                                                         {item.name}
-                                                    </a>
+                                                    </Link>
                                                 </MenuItem>
                                             ))}
                                         </MenuItems>
@@ -113,11 +120,10 @@ export default function Navbar() {
                             {navigation.map((item) => (
                                 <DisclosureButton
                                     key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    aria-current={item.current ? 'page' : undefined}
+                                    as={Link}
+                                    to={item.path}
                                     className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        item.path === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                         'block rounded-md px-3 py-2 text-base font-medium',
                                     )}
                                 >
@@ -134,21 +140,13 @@ export default function Navbar() {
                                     <div className="text-base/5 font-medium text-white">{user.name}</div>
                                     <div className="text-sm font-medium text-gray-400">{user.email}</div>
                                 </div>
-                                <button
-                                    type="button"
-                                    className="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                                >
-                                    <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">View notifications</span>
-                                    <BellIcon aria-hidden="true" className="size-6" />
-                                </button>
                             </div>
                             <div className="mt-3 space-y-1 px-2">
                                 {userNavigation.map((item) => (
                                     <DisclosureButton
                                         key={item.name}
-                                        as="a"
-                                        href={item.href}
+                                        as={Link}
+                                        to={item.path}
                                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                                     >
                                         {item.name}
@@ -161,7 +159,7 @@ export default function Navbar() {
 
                 <header className="bg-white shadow-sm">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{currentPage}</h1>
                     </div>
                 </header>
                 <main>
