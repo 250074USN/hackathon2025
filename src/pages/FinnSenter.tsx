@@ -15,7 +15,6 @@ const FinnSenter: React.FC = () => {
           width="100%"
           height="600"
           style={{ border: 0 }}
-          allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Google Map"

@@ -1,284 +1,137 @@
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+import { CheckIcon } from "@heroicons/react/20/solid";
+
+const plans = [
+  {
+    name: "Hobby",
+    priceMonthly: "NOK 299",
+    description:
+      "Den perfekte planen for de som nettopp har startet sin treningsreise.",
+    features: [
+      "Tilgang til grunnleggende utstyr",
+      "Begrensede klasser",
+      "Online støtte",
+    ],
+    featured: false,
+  },
+  {
+    name: "Premium",
+    priceMonthly: "NOK 499",
+    description:
+      "For de som ønsker mer, med prioritert tilgang til klasser og trenere.",
+    features: [
+      "Tilgang til alt utstyr",
+      "Ubegrensede klasser",
+      "24/7 tilgang til treningssenteret",
+      "Prioritert støtte fra trener",
+    ],
+    featured: true,
+  },
+];
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function BliMedlem() {
-    return (
-        <div className="font-sans text-white border-4 border-white p-4 rounded-lg">
-        <form>
-            <div className="space-y-12">
-                <div className="border-b border-gray-900/10 pb-12">
-                    <h2 className="text-base/7 font-semibold text-gray-900">Profile</h2>
-                    <p className="mt-1 text-sm/6 text-gray-600">
-                        This information will be displayed publicly so be careful what you share.
-                    </p>
-
-                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div className="sm:col-span-4">
-                            <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
-                                Username
-                            </label>
-                            <div className="mt-2">
-                                <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                                    <div className="shrink-0 text-base text-gray-500 select-none sm:text-sm/6"></div>
-                                    <input
-                                        id="username"
-                                        name="username"
-                                        type="text"
-                                        placeholder="janesmith"
-                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-span-full">
-                            <label htmlFor="about" className="block text-sm/6 font-medium text-gray-900">
-                                About
-                            </label>
-                            <div className="mt-2">
-                <textarea
-                    id="about"
-                    name="about"
-                    rows={3}
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                    defaultValue={''}
-                />
-                            </div>
-                            <p className="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
-                        </div>
-
-                        <div className="col-span-full">
-                            <label htmlFor="photo" className="block text-sm/6 font-medium text-gray-900">
-                                Photo
-                            </label>
-                            <div className="mt-2 flex items-center gap-x-3">
-                                <UserCircleIcon aria-hidden="true" className="size-12 text-gray-300" />
-                                <button
-                                    type="button"
-                                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
-                                >
-                                    Change
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="col-span-full">
-                            <label htmlFor="cover-photo" className="block text-sm/6 font-medium text-gray-900">
-                                Cover photo
-                            </label>
-                            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                <div className="text-center">
-                                    <PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />
-                                    <div className="mt-4 flex text-sm/6 text-gray-600">
-                                        <label
-                                            htmlFor="file-upload"
-                                            className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-indigo-500"
-                                        >
-                                            <span>Upload a file</span>
-                                            <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                        </label>
-                                        <p className="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p className="text-xs/5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border-b border-gray-900/10 pb-12">
-                    <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
-                    <p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
-                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div className="sm:col-span-3">
-                            <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
-                                First name
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="first-name"
-                                    name="first-name"
-                                    type="text"
-                                    autoComplete="given-name"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-3">
-                            <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
-                                Last name
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="last-name"
-                                    name="last-name"
-                                    type="text"
-                                    autoComplete="family-name"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-4">
-                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
-                                Email address
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-3">
-                            <label htmlFor="country" className="block text-sm/6 font-medium text-gray-900">
-                                Country
-                            </label>
-                            <div className="mt-2 grid grid-cols-1">
-                                <select
-                                    id="country"
-                                    name="country"
-                                    autoComplete="country-name"
-                                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                >
-                                    <option>Norway</option>
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
-                                </select>
-                                <ChevronDownIcon
-                                    aria-hidden="true"
-                                    className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="col-span-full">
-                            <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
-                                Street address
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="street-address"
-                                    name="street-address"
-                                    type="text"
-                                    autoComplete="street-address"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-2 sm:col-start-1">
-                            <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
-                                City
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="city"
-                                    name="city"
-                                    type="text"
-                                    autoComplete="address-level2"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-2">
-                            <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
-                                State / Province
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="region"
-                                    name="region"
-                                    type="text"
-                                    autoComplete="address-level1"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="sm:col-span-2">
-                            <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
-                                Postal code
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="postal-code"
-                                    name="postal-code"
-                                    type="text"
-                                    autoComplete="postal-code"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border-b border-gray-900/10 pb-12">
-                    <h2 className="text-base/7 font-semibold text-gray-900">Notifications</h2>
-                    <p className="mt-1 text-sm/6 text-gray-600">
-                        We'll always let you know about important changes, but you pick what else you want to hear about.
-                    </p>
-                        <fieldset>
-                            <div className="mt-6 space-y-6">
-                                <div className="flex items-center gap-x-3">
-                                    <input
-                                        defaultChecked
-                                        id="push-everything"
-                                        name="push-notifications"
-                                        type="radio"
-                                        className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                                    />
-                                    <label htmlFor="push-everything" className="block text-sm/6 font-medium text-gray-900">
-                                        Everything
-                                    </label>
-                                </div>
-                                <div className="flex items-center gap-x-3">
-                                    <input
-                                        id="push-email"
-                                        name="push-notifications"
-                                        type="radio"
-                                        className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                                    />
-                                    <label htmlFor="push-email" className="block text-sm/6 font-medium text-gray-900">
-                                        Same as email
-                                    </label>
-                                </div>
-                                <div className="flex items-center gap-x-3">
-                                    <input
-                                        id="push-nothing"
-                                        name="push-notifications"
-                                        type="radio"
-                                        className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                                    />
-                                    <label htmlFor="push-nothing" className="block text-sm/6 font-medium text-gray-900">
-                                        No push notifications
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                </div>
-            </div>
-
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" className="text-sm/6 font-semibold text-gray-900">
-                    Cancel
-                </button>
-                <button
-                    type="submit"
-                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                    Save
-                </button>
-            </div>
-        </form>
-        </div>
-    )
+  return (
+    <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className="mx-auto max-w-4xl text-center">
+        <h2 className="text-base/7 font-semibold text-indigo-600">
+          Bli Medlem
+        </h2>
+        <p className="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+          Velg riktig medlemskapsplan
+        </p>
+      </div>
+      <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-gray-600 sm:text-xl/8">
+        Velg en plan som passer dine treningsbehov og mål.
+      </p>
+      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+        {plans.map((plan, planIdx) => (
+          <div
+            key={plan.name}
+            className={classNames(
+              plan.featured
+                ? "relative bg-gray-900 shadow-2xl"
+                : "bg-white/60 sm:mx-8 lg:mx-0",
+              plan.featured
+                ? ""
+                : planIdx === 0
+                ? "rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl"
+                : "sm:rounded-t-none lg:rounded-tr-3xl lg:rounded-bl-none",
+              "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10"
+            )}
+          >
+            <h3
+              id={plan.name}
+              className={classNames(
+                plan.featured ? "text-indigo-400" : "text-indigo-600",
+                "text-base/7 font-semibold"
+              )}
+            >
+              {plan.name}
+            </h3>
+            <p className="mt-4 flex items-baseline gap-x-2">
+              <span
+                className={classNames(
+                  plan.featured ? "text-white" : "text-gray-900",
+                  "text-5xl font-semibold tracking-tight"
+                )}
+              >
+                {plan.priceMonthly}
+              </span>
+              <span
+                className={classNames(
+                  plan.featured ? "text-gray-400" : "text-gray-500",
+                  "text-base"
+                )}
+              >
+                /måned
+              </span>
+            </p>
+            <p
+              className={classNames(
+                plan.featured ? "text-gray-300" : "text-gray-600",
+                "mt-6 text-base/7"
+              )}
+            >
+              {plan.description}
+            </p>
+            <ul
+              role="list"
+              className={classNames(
+                plan.featured ? "text-gray-300" : "text-gray-600",
+                "mt-8 space-y-3 text-sm/6 sm:mt-10"
+              )}
+            >
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex gap-x-3">
+                  <CheckIcon
+                    aria-hidden="true"
+                    className={classNames(
+                      plan.featured ? "text-indigo-400" : "text-indigo-600",
+                      "h-6 w-5 flex-none"
+                    )}
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#"
+              aria-describedby={plan.name}
+              className={classNames(
+                plan.featured
+                  ? "bg-indigo-500 text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-indigo-500"
+                  : "text-indigo-600 ring-1 ring-indigo-200 ring-inset hover:ring-indigo-300 focus-visible:outline-indigo-600",
+                "mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10"
+              )}
+            >
+              Bli Medlem Nå
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
