@@ -9,7 +9,6 @@ import Nettbutikk from "../pages/Nettbutikk";
 import PTtjenester from "../pages/PTtjenester.tsx";
 import Gruppetimer from "../pages/Gruppetimer.tsx";
 import Styrketrening from "../pages/Styrketrening.tsx";
-import Plan from "../pages/plan.tsx";
 
 
 function Routing() {
@@ -20,7 +19,6 @@ function Routing() {
             <Route path="/tjenester" element={<Tjenester />} />
             <Route path="/timeplan" element={<Timeplan />} />
             <Route path="/bli-medlem" element={<BliMedlem />} />
-            <Route path="/bli-medlem/plan" element={<Plan />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/nettbutikk" element={<Nettbutikk />} />
             <Route path= "/tjenester/styrketrening"  element={<Styrketrening />} />
