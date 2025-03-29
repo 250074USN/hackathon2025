@@ -3,7 +3,7 @@ import React from "react";
 const FinnSenter: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 py-10">
-      <h1 className="text-4xl font-bold text-center text-indigo-600 mb-8">
+      <h1 className="text-4xl font-bold text-cente mb-8">
         Finn Senter
       </h1>
       <p className="text-lg text-gray-600 mb-12">
