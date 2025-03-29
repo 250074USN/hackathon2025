@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImage from "../assets/banner.jpg"; // Pass på at bildet ligger her
+import bannerImage from "../assets/banner.png"; // Pass på at bildet ligger her
 
 const HomePage: React.FC = () => {
   return (
