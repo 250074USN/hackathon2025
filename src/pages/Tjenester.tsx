@@ -17,11 +17,11 @@ const trenere = [
     image: "/public/trener.png",
   },
   {
-    navn: "Jonas K.",
+    navn: "Jørgen Johannesen",
     rolle: "Yogainstruktør",
     beskrivelse:
-      "Jonas K. er vår erfarne yogainstruktør som kombinerer rolig tilstedeværelse med en dyp forståelse for pusteteknikker og kroppens balanse. Med flere års erfaring i yoga og meditasjon, tilbyr Jonas en rolig og helhetlig tilnærming til trening som fremmer både fysisk og mental velvære. Han er ekspert på å tilpasse hver økt til deltakerens individuelle behov, enten det er for å bygge fleksibilitet, redusere stress eller forbedre kroppsholdningen.",
-    image: "/public/trener.png",
+      "Jørg1 er vår erfarne yogainstruktør som kombinerer rolig tilstedeværelse med en dyp forståelse for pusteteknikker og kroppens balanse. Med flere års erfaring i yoga og meditasjon, tilbyr Jonas en rolig og helhetlig tilnærming til trening som fremmer både fysisk og mental velvære. Han er ekspert på å tilpasse hver økt til deltakerens individuelle behov, enten det er for å bygge fleksibilitet, redusere stress eller forbedre kroppsholdningen.",
+    image: "/public/jorg1.jpg",
   },
   {
     navn: "Amanda L.",
@@ -155,7 +155,7 @@ const Tjenester: React.FC = () => {
                     <img
                       src={trener.image}
                       alt={trener.navn}
-                      className="w-full h-40 object-cover rounded-lg mb-4"
+                      className="w-auto h-auto rounded-lg mb-4"
                     />
                     <h3 className="text-xl font-semibold">{trener.navn}</h3>
                     <p className="text-sm text-gray-400 mb-1">{trener.rolle}</p>
