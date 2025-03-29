@@ -157,12 +157,7 @@ export default function Navbar() {
                 </Disclosure>
 
                 {/* Legg til en margin-top for innholdet etter navigasjonsbaren */}
-                <div className="pt-20">
-                    <header className="bg-white shadow-sm">
-                        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{currentPage}</h1>
-                        </div>
-                    </header>
+                <div className="pt-10">
                 </div>
             </div>
         </>
