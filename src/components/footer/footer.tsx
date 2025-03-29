@@ -32,9 +32,36 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-2">Følg oss</h3>
             <ul className="flex space-x-4">
-              <li><a href="#" className="hover:underline">Facebook</a></li>
-              <li><a href="#" className="hover:underline">Instagram</a></li>
-              <li><a href="#" className="hover:underline">Twitter</a></li>
+              <li>
+                <a href="#" className="hover:underline">
+                  <img
+                      alt="Facebook"
+                      height="36"
+                      src="https://react.email/static/facebook-logo.png"
+                      width="36"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  <img
+                      alt="Instagram"
+                      height="36"
+                      src="https://react.email/static/instagram-logo.png"
+                      width="36"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  <img
+                      alt="Twitter"
+                      height="36"
+                      src="https://react.email/static/x-logo.png"
+                      width="36"
+                  />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
