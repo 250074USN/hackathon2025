@@ -6,11 +6,11 @@ import Routing from "./routing/routing.tsx"
 function App() {
     return (
         <>
-            <Navbar />
-
-            <Routing />
-
-            <Footer />
+            <div className="flex flex-col min-h-screen"> {/* Bruker flexbox og min-h-screen */}
+                <Navbar />
+                <Routing />
+                <Footer />
+            </div>
         </>
     );
 }

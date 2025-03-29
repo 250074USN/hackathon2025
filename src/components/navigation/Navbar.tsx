@@ -29,14 +29,12 @@ const navigation = [
 
 const userNavigation = [
     { name: 'Your Profile', path: '/your-profile' },
-    { name: 'Settings', path: '/settings' },
     { name: 'Sign out', path: '/sign-out' },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-
 export default function Navbar() {
     const router = useLocation()
     const currentPage = navigation.find(item => item.path === router.pathname)?.name || 'Hjem'
@@ -44,16 +42,17 @@ export default function Navbar() {
     return (
         <>
             <div className="min-h-full">
-                <Disclosure as="nav" className="bg-gray-800">
+                {/* Fester navigasjonsbaren til toppen */}
+                <Disclosure as="nav" className="bg-gray-800 fixed top-0 left-0 right-0 z-10">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between">
                             <div className="flex items-center">
                                 <div className="shrink-0">
-                                    <img
-                                        alt="Your Company"
-                                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                        className="size-8"
-                                    />
+                                    {/*<img*/}
+                                    {/*    alt="Your Company"*/}
+                                    {/*    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"*/}
+                                    {/*    className="size-8"*/}
+                                    {/*/>*/}
                                 </div>
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
@@ -75,14 +74,6 @@ export default function Navbar() {
                             </div>
                             <div className="hidden md:block">
                                 <div className="ml-4 flex items-center md:ml-6">
-                                    <button
-                                        type="button"
-                                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                                    >
-                                        <span className="absolute -inset-1.5" />
-                                        <span className="sr-only">View notifications</span>
-                                        <BellIcon aria-hidden="true" className="size-6" />
-                                    </button>
 
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="relative ml-3">
@@ -165,11 +156,9 @@ export default function Navbar() {
                     </DisclosurePanel>
                 </Disclosure>
 
-                <header className="bg-white shadow-sm">
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{currentPage}</h1>
-                    </div>
-                </header>
+                {/* Legg til en margin-top for innholdet etter navigasjonsbaren */}
+                <div className="pt-10">
+                </div>
             </div>
         </>
     )
