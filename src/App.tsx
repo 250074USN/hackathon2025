@@ -1,6 +1,5 @@
 import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/footer/footer.tsx";
-
 import Routing from "./routing/routing.tsx"
 
 

@@ -12,9 +12,17 @@ const user = {
 const navigation = [
     { name: 'Hjem', path: '/' },
     { name: 'Finn senter', path: '/finn-senter' },
-    { name: 'Tjenester', path: '/tjenester' },
     { name: 'Timeplan', path: '/timeplan' },
-    { name: 'Nettbutikk', path: '/nettbutikk' },
+    {
+        name: 'Tjenester',
+        path: '/tjenester',
+        isDropdown: true, // Dette markerer at Tjenester er en dropdown
+        subMenu: [
+            { name: 'Styrketrening', path: '/tjenester/styrketrening' },
+            { name: 'Gruppetimer', path: '/tjenester/gruppetimer' },
+            { name: 'PT-tjenester', path: '/tjenester/pt-tjenester' },
+        ]
+    },
     { name: 'Bli medlem', path: '/bli-medlem' },
     { name: 'Kontakt oss', path: '/kontakt' },
 ]
@@ -30,7 +38,6 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-
     const router = useLocation()
     const currentPage = navigation.find(item => item.path === router.pathname)?.name || 'Hjem'
 
@@ -51,58 +58,85 @@ export default function Navbar() {
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
                                         {navigation.map((item) => (
-                                            <Link
-                                                key={item.name}
-                                                to={item.path}
-                                                className={classNames(
-                                                    item.path === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium',
-                                                )}
-                                            >
-                                                {item.name}
-                                            </Link>
+                                            item.isDropdown ? (
+                                                // Dropdown-meny for "Tjenester"
+                                                <Menu as="div" className="relative" key={item.name}>
+                                                    <div>
+                                                        <MenuButton className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                                                            {item.name}
+                                                        </MenuButton>
+                                                    </div>
+
+                                                    <MenuItems
+                                                        className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                                    >
+                                                        {item.subMenu.map((subItem) => (
+                                                            <MenuItem key={subItem.name}>
+                                                                <Link
+                                                                    to={subItem.path}
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                                >
+                                                                    {subItem.name}
+                                                                </Link>
+                                                            </MenuItem>
+                                                        ))}
+                                                    </MenuItems>
+                                                </Menu>
+                                            ) : (
+                                                // Vanlige lenker for de andre navigasjonslinkene
+                                                <Link
+                                                    key={item.name}
+                                                    to={item.path}
+                                                    className={classNames(
+                                                        item.path === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        'rounded-md px-3 py-2 text-sm font-medium',
+                                                    )}
+                                                >
+                                                    {item.name}
+                                                </Link>
+                                            )
                                         ))}
                                     </div>
                                 </div>
                             </div>
-                            <div className="hidden md:block">
-                                <div className="ml-4 flex items-center md:ml-6">
-                                    <button
-                                        type="button"
-                                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                                    >
-                                        <span className="absolute -inset-1.5" />
-                                        <span className="sr-only">View notifications</span>
-                                        <BellIcon aria-hidden="true" className="size-6" />
-                                    </button>
+                            {/*<div className="hidden md:block">*/}
+                            {/*    <div className="ml-4 flex items-center md:ml-6">*/}
+                            {/*        <button*/}
+                            {/*            type="button"*/}
+                            {/*            className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"*/}
+                            {/*        >*/}
+                            {/*            <span className="absolute -inset-1.5" />*/}
+                            {/*            <span className="sr-only">View notifications</span>*/}
+                            {/*            <BellIcon aria-hidden="true" className="size-6" />*/}
+                            {/*        </button>*/}
 
-                                    {/* Profile dropdown */}
-                                    <Menu as="div" className="relative ml-3">
-                                        <div>
-                                            <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
-                                                <span className="absolute -inset-1.5" />
-                                                <span className="sr-only">Open user menu</span>
-                                                <img alt="" src={user.imageUrl} className="size-8 rounded-full" />
-                                            </MenuButton>
-                                        </div>
-                                        <MenuItems
-                                            transition
-                                            className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                                        >
-                                            {userNavigation.map((item) => (
-                                                <MenuItem key={item.name}>
-                                                    <Link
-                                                        to={item.path}
-                                                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                </MenuItem>
-                                            ))}
-                                        </MenuItems>
-                                    </Menu>
-                                </div>
-                            </div>
+                            {/*        /!* Profile dropdown *!/*/}
+                            {/*        <Menu as="div" className="relative ml-3">*/}
+                            {/*            <div>*/}
+                            {/*                <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">*/}
+                            {/*                    <span className="absolute -inset-1.5" />*/}
+                            {/*                    <span className="sr-only">Open user menu</span>*/}
+                            {/*                    <img alt="" src={user.imageUrl} className="size-8 rounded-full" />*/}
+                            {/*                </MenuButton>*/}
+                            {/*            </div>*/}
+                            {/*            <MenuItems*/}
+                            {/*                transition*/}
+                            {/*                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden"*/}
+                            {/*            >*/}
+                            {/*                {userNavigation.map((item) => (*/}
+                            {/*                    <MenuItem key={item.name}>*/}
+                            {/*                        <Link*/}
+                            {/*                            to={item.path}*/}
+                            {/*                            className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"*/}
+                            {/*                        >*/}
+                            {/*                            {item.name}*/}
+                            {/*                        </Link>*/}
+                            {/*                    </MenuItem>*/}
+                            {/*                ))}*/}
+                            {/*            </MenuItems>*/}
+                            {/*        </Menu>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                             <div className="-mr-2 flex md:hidden">
                                 {/* Mobile menu button */}
                                 <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
@@ -162,9 +196,6 @@ export default function Navbar() {
                         <h1 className="text-3xl font-bold tracking-tight text-gray-900">{currentPage}</h1>
                     </div>
                 </header>
-                <main>
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
-                </main>
             </div>
         </>
     )
