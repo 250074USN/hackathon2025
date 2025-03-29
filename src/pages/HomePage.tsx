@@ -9,14 +9,10 @@ const HomePage: React.FC = () => {
         <img
           src={bannerImage}
           alt="Treningsinspirasjon"
-          className="w-full h-full object-cover object-[100%_15%] brightness-75"
-
-
-
+          className="w-full h-full object-cover object-[80%_0%] brightness-75"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-          <h1 className="text-5xl font-bold mb-2">Aktivio</h1>
-          <p className="text-xl">Din vei til et sunnere og sterkere liv</p>
+
         </div>
       </div>
 

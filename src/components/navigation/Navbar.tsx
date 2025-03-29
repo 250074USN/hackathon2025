@@ -14,6 +14,7 @@ const navigation = [
     { name: 'Finn senter', path: '/finn-senter' },
     { name: 'Tjenester', path: '/tjenester' },
     { name: 'Timeplan', path: '/timeplan' },
+    { name: 'Nettbutikk', path: '/nettbutikk' },
     { name: 'Bli medlem', path: '/bli-medlem' },
     { name: 'Kontakt oss', path: '/kontakt' },
 ]

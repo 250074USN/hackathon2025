@@ -5,6 +5,7 @@ import Tjenester from "../pages/Tjenester";
 import Timeplan from "../pages/Timeplan";
 import BliMedlem from "../pages/BliMedlem";
 import Kontakt from "../pages/KontaktOss";
+import Nettbutikk from "../pages/Nettbutikk";
 
 function Routing() {
     return (
@@ -15,7 +16,8 @@ function Routing() {
             <Route path="/timeplan" element={<Timeplan />} />
             <Route path="/bli-medlem" element={<BliMedlem />} />
             <Route path="/kontakt" element={<Kontakt />} />
-            <Route path="*" element={<HomePage />} /> {/* Fallback route */}
+            <Route path="/nettbutikk" element={<Nettbutikk />} />
+            <Route path="*" element={<HomePage />} />
         </Routes>
     );
 }
